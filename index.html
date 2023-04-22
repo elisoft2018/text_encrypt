@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+
+</head>
+
+<body style="background-color: #E5E5E5;">
+    <section id="section_logo">
+
+        <div id="logo">
+
+            <img src="images/logo.svg" id="img_logo">
+
+        </div>
+
+    </section>
+    <section id="button_input_controls">
+
+        <input type="text" placeholder="Ingrese el texto" id="text_message" pattern="[a-z]" />
+
+        <div id="controls_buttons">
+            <div>
+                <button id="encrypt">
+
+                    Encriptar
+
+                </button>
+            </div>
+
+            <div id="contentButtonDecrypt">
+                <button id="decrypt">
+
+                    Desencriptar
+
+                </button>
+            </div>
+
+            <button id="reset">
+
+                Reiniciar
+
+            </button>
+
+        </div>
+
+        <div id="info_icon_text">
+
+            <img src="images/info_icon.svg" id="info_icon">
+            <label id="info_text">Solo letras minúsculas y sin acentos</label>
+
+        </div>
+
+    </section>
+
+    <div id="vertical_sidebar">
+
+    </div>
+    <section id="elements">
+
+        <div id="doll_figure">
+
+            <img src="images/doll.svg" id="doll">
+
+        </div>
+        <div id="labels_text">
+
+            <label id="text_not_found">Ningún mensaje fue encontrado</label>
+            <label id="text_tooltip">Ingresa el texto que desees encriptar o desencriptar.</label>
+
+        </div>
+
+    </section>
+
+    <label id="encrypt_and_decrypt_text"></label>
+
+    <div id="contenCopyButton">
+
+        <button id="copy_button">
+
+            Copiar
+
+        </button>
+
+    </div>
+
+    <script src="scripts/script_encrypt_and_decrypt.js"></script>
+
+</body>
+
+</html>
