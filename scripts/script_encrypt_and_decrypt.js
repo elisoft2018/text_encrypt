@@ -6,10 +6,10 @@ let buttonCopyText = document.getElementById("copy_button");
 let encrypt_and_decrypt_text = document.getElementById("encrypt_and_decrypt_text");
 let contentButtonDecrypt = document.getElementById("contentButtonDecrypt");
 let contenCopyButton = document.getElementById("contenCopyButton");
+let contenButtonReset = document.getElementById("contentButtonReset");
 let text_tooltip = document.getElementById("text_tooltip");
 let input = document.getElementById("text_message");
-contentButtonDecrypt.hidden = true;
-contenCopyButton.hidden = true;
+let elements = document.getElementById("elements");
 input.focus();
 
 function printingMessageEncrypt() {
@@ -19,7 +19,16 @@ function printingMessageEncrypt() {
     phrase = input.value;
     input.focus();
 
-    if (phrase != "") {
+    if (phrase == "") {
+
+        elements.hidden = false;
+        encrypt_and_decrypt_text.innerText = "";
+        encrypt_and_decrypt_text.value = "";
+        input.focus();
+
+        alert("Debes ingresar un texto para cifrar");
+
+    } else {
 
         arrayPhrase = phrase.split("");
 
@@ -50,41 +59,34 @@ function printingMessageEncrypt() {
 
         encryptTextFinal = arrayPhrase.join("");
         encrypt_and_decrypt_text.innerText = encryptTextFinal;
-
-        let elements = document.getElementById("elements");
         elements.hidden = true;
-
-        contentButtonDecrypt.hidden = false;
-        contenCopyButton.hidden = false;
-
-    } else {
-
-        alert("Debes ingresar un texto para cifrar");
-
     }
 
 }
 
 function printingMessageDecrypt() {
 
-    if (input.value != "") {
+    if (input.value == "") {
 
+        alert("Debes ingresar un texto cifrado para decifrar");
+
+        encrypt_and_decrypt_text.innerText = "";
+        encrypt_and_decrypt_text.value = "";
+        elements.hidden = false;
         input.focus();
 
-        encrypt_and_decrypt_text.innerText = encryptTextFinal
+
+    } else {
+
+        encrypt_and_decrypt_text.innerText = input.value
             .replaceAll("enter", "e")
             .replaceAll("imes", "i")
             .replaceAll("ai", "a")
             .replaceAll("ober", "o")
             .replaceAll("ufat", "u");
 
-        input.value = "";
-
-    } else {
-
-        alert("Debes ingresar un texto cifrado para decifrar");
-
     }
+
 
 }
 
@@ -92,22 +94,22 @@ function copyText() {
 
     if (encrypt_and_decrypt_text.value != "") {
 
-        let textCopy = encrypt_and_decrypt_text;
+        alert("No hay texto para copiar al portapapeles");
+
+        text_tooltip.hidden = true;
+
+
+
+    } else {
+
+        let textCopy = encrypt_and_decrypt_text.value;
         let selection = document.createRange();
         selection.selectNodeContents(textCopy);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(selection);
         let copy = document.execCommand('copy');
         window.getSelection().removeRange(selection);
-        encrypt_and_decrypt_text.value = "";
-        elements.hidden = false;
-        encrypt_and_decrypt_text.innerText = ""
-        input.value = "";
-        input.focus();
 
-    }else{
-
-        text_tooltip.hidden = true;
         input.focus();
     }
 
