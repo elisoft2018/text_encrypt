@@ -94,13 +94,6 @@ function copyText() {
 
     if (encrypt_and_decrypt_text.value != "") {
 
-        alert("No hay texto para copiar al portapapeles");
-
-        text_tooltip.hidden = true;
-
-
-
-    } else {
 
         let textCopy = encrypt_and_decrypt_text.value;
         let selection = document.createRange();
@@ -111,6 +104,15 @@ function copyText() {
         window.getSelection().removeRange(selection);
 
         input.focus();
+
+
+    } else {
+
+        alert("No hay texto para copiar al portapapeles");
+
+        text_tooltip.hidden = true;
+
+
     }
 
 
