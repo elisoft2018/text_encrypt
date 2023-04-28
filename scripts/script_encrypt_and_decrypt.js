@@ -4,9 +4,6 @@ let buttonDecrypt = document.getElementById("decrypt");
 let buttonReset = document.getElementById("reset");
 let buttonCopyText = document.getElementById("copy_button");
 let encrypt_and_decrypt_text = document.getElementById("encrypt_and_decrypt_text");
-let contentButtonDecrypt = document.getElementById("contentButtonDecrypt");
-let contenCopyButton = document.getElementById("contenCopyButton");
-let contenButtonReset = document.getElementById("contentButtonReset");
 let text_tooltip = document.getElementById("text_tooltip");
 let input = document.getElementById("text_message");
 let elements = document.getElementById("elements");
@@ -19,16 +16,7 @@ function printingMessageEncrypt() {
     phrase = input.value;
     input.focus();
 
-    if (phrase == "") {
-
-        elements.hidden = false;
-        encrypt_and_decrypt_text.innerText = "";
-        encrypt_and_decrypt_text.value = "";
-        input.focus();
-
-        alert("Debes ingresar un texto para cifrar");
-
-    } else {
+    if (phrase != "") {
 
         arrayPhrase = phrase.split("");
 
@@ -60,23 +48,20 @@ function printingMessageEncrypt() {
         encryptTextFinal = arrayPhrase.join("");
         encrypt_and_decrypt_text.innerText = encryptTextFinal;
         elements.hidden = true;
+
+    } else {
+
+        elements.hidden = false;
+        input.focus();
+        alert("Debes ingresar un texto para cifrar");
+
     }
 
 }
 
 function printingMessageDecrypt() {
 
-    if (input.value == "") {
-
-        alert("Debes ingresar un texto cifrado para decifrar");
-
-        encrypt_and_decrypt_text.innerText = "";
-        encrypt_and_decrypt_text.value = "";
-        elements.hidden = false;
-        input.focus();
-
-
-    } else {
+    if (input.value != "") {
 
         encrypt_and_decrypt_text.innerText = input.value
             .replaceAll("enter", "e")
@@ -85,14 +70,19 @@ function printingMessageDecrypt() {
             .replaceAll("ober", "o")
             .replaceAll("ufat", "u");
 
-    }
+    } else {
 
+        alert("Debes ingresar un texto cifrado para decifrar");
+        elements.hidden = false;
+        input.focus();
+
+    }
 
 }
 
 function copyText() {
 
-    if (encrypt_and_decrypt_text.value != "") {
+    if (encrypt_and_decrypt_text.innerText != "") {
 
 
         let textCopy = encrypt_and_decrypt_text;
@@ -105,7 +95,6 @@ function copyText() {
         window.getSelection().removeRange(selection);
         elements.hidden = false;
         encrypt_and_decrypt_text.innerText = "";
-        encrypt_and_decrypt_text.value = "";
         input.focus();
 
 
@@ -117,7 +106,6 @@ function copyText() {
 
 
     }
-
 
 }
 
