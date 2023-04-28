@@ -95,14 +95,17 @@ function copyText() {
     if (encrypt_and_decrypt_text.value != "") {
 
 
-        let textCopy = encrypt_and_decrypt_text.value;
+        let textCopy = encrypt_and_decrypt_text;
+        textCopy.parentElement.innerHTML;
         let selection = document.createRange();
         selection.selectNodeContents(textCopy);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(selection);
         let copy = document.execCommand('copy');
         window.getSelection().removeRange(selection);
-
+        elements.hidden = false;
+        encrypt_and_decrypt_text.innerText = "";
+        encrypt_and_decrypt_text.value = "";
         input.focus();
 
 
